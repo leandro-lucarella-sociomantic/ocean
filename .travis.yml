@@ -16,15 +16,12 @@ before_install: git submodule update --init
 
 env:
     global:
+        - DIST=xenial
         # Make sure beaver is in the PATH
         - PATH="$(git config -f .gitmodules submodule.beaver.path)/bin:$PATH"
     matrix:
-        - DMD=1.081.1 DIST=xenial F=production
-        - DMD=1.081.1 DIST=xenial F=devel
-        - DMD=2.070.2.s12 DIST=xenial F=production
-        - DMD=2.070.2.s12 DIST=xenial F=devel
-        - DMD=2.071.2.s1 DIST=xenial F=production
-        - DMD=2.071.2.s1 DIST=xenial F=devel
+        - DMD=1.081.1 F=devel
+        - DMD=2.070.2.s12 F=devel
 
 # Don't build tags already converted to D2
 if: NOT tag =~ \+d2$
