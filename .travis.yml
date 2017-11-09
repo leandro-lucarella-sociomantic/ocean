@@ -41,9 +41,6 @@ jobs:
           # We need to include the exclusion of D2 tags because this "if"
           # replaces the global one
           if: tag IS present AND NOT tag =~ \+d2$
-          # We override it, otherwise is inherited from the first matrix row,
-          # we need DIST and DMD for `beaver dlang install`
-          env: DIST=xenial DMD=2.070.2.s12
           # before_install and install are inherited
           script: beaver dlang d2-release
           # Overridden to NOP, otherwise is inherited
